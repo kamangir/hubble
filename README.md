@@ -23,7 +23,7 @@ Example use.
 
 ```bash
 abcli select
-hubble select public/u4ge/u4ge0106r
+hubble select public/u4ge/u4ge0106r/
 hubble list .
 hubble download . .
 open .

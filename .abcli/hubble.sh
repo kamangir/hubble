@@ -15,7 +15,7 @@ function hubble() {
             python3 -m hubble --help
         fi
 
-        abcli_log "\nexample object: public/u4ge/u4ge0106r"
+        abcli_log "\nexample object: public/u4ge/u4ge0106r/"
         return
     fi
 
