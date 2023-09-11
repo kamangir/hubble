@@ -6,9 +6,11 @@ function hubble() {
     if [ $task == "help" ] ; then
         abcli_log "🪐 $(python3 -m hubble version)\n"
 
-        abcli_show_usage "hubble list [<object-name>]" \
+        abcli_show_usage "hubble download$ABCUL[~dryrun,filename=<filename>|all]$ABCUL[<hubble-object-name>]$ABCUL[<object-name>]" \
+            "<hubble-object-name> -> <object-name>."
+        abcli_show_usage "hubble list$ABCUL[<object-name>]" \
             "list hubble."
-        abcli_show_usage "hubble select <object-name>" \
+        abcli_show_usage "hubble select$ABCUL<object-name>" \
             "select a hubble object."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
@@ -22,6 +24,30 @@ function hubble() {
     local function_name=hubble_$task
     if [[ $(type -t $function_name) == "function" ]] ; then
         $function_name "${@:2}"
+        return
+    fi
+
+    if [ "$task" == download ] ; then
+        local options=$2
+        local filename=$(abcli_option "$options" filename all)
+        local do_dryrun=$(abcli_option_int "$options" dryrun 1)
+
+        local hubble_object_name=$(abcli_clarify_object "$3" . hubble)
+        local object_name=$(abcli_clarify_object "$4" .)
+
+        if [ "$filename" == all ] ; then
+            local command_line="aws s3 sync --no-sign-request \
+                s3://stpubdata/hst/$hubble_object_name \
+                $abcli_object_root/$object_name/"
+        else
+            local command_line="aws s3 cp --no-sign-request \
+                s3://stpubdata/hst/$hubble_object_name$filename \
+                $abcli_object_root/$object_name/"
+        fi
+
+        abcli_log "⚙️  $command_line"
+        [[ "$do_dryrun" == 0 ]] && eval "$command_line"
+
         return
     fi
 

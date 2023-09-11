@@ -9,14 +9,21 @@ hubble help
 ```
 
 ```bash
-🪐 hubble-3.5.1
+🪐 hubble-3.6.1
 
-hubble list [.|<object-name>]
+hubble download \
+	[~dryrun,filename=<filename>|all] \
+	[<hubble-object-name>] \
+	[<object-name>]
+ . <hubble-object-name> -> <object-name>.
+hubble list \
+	[<object-name>]
  . list hubble.
-hubble select <object-name>
+hubble select \
+	<object-name>
  . select a hubble object.
 
-example object: public/u4ge/u4ge0106r
+example object: public/u4ge/u4ge0106r/
  ```
 
 Example use.
@@ -25,8 +32,8 @@ Example use.
 abcli select
 hubble select public/u4ge/u4ge0106r/
 hubble list .
-hubble download . .
+hubble download - . .
 open .
 ```
 
-🔥
+[results](url)
