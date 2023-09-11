@@ -4,6 +4,8 @@ function hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ] ; then
+        abcli_log "🪐 $(python3 -m hubble version)\n"
+
         abcli_show_usage "hubble list [<suffix>]" \
             "list hubble."
 
