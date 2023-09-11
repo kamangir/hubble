@@ -1,11 +1,11 @@
 from setuptools import setup
 
-from blue_plugin import NAME, VERSION
+from hubble import NAME, VERSION
 
 setup(
     name=NAME,
     author="arash@kamangir.net",
     version=VERSION,
-    description="template for an abcli plugin",
+    description="tools to access and process Hubble Space Telescope imagery.",
     packages=[NAME],
 )
