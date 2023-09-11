@@ -6,8 +6,10 @@ function hubble() {
     if [ $task == "help" ] ; then
         abcli_log "🪐 $(python3 -m hubble version)\n"
 
-        abcli_show_usage "hubble download$ABCUL[~dryrun,filename=<filename>|all]$ABCUL[<hubble-object-name>]$ABCUL[<object-name>]" \
+        local options="~dryrun,filename=<filename>|all,upload"
+        abcli_show_usage "hubble download$ABCUL[$options]$ABCUL[<hubble-object-name>]$ABCUL[<object-name>]" \
             "<hubble-object-name> -> <object-name>."
+
         abcli_show_usage "hubble list$ABCUL[<object-name>]" \
             "list hubble."
         abcli_show_usage "hubble select$ABCUL<object-name>" \
@@ -31,6 +33,7 @@ function hubble() {
         local options=$2
         local filename=$(abcli_option "$options" filename all)
         local do_dryrun=$(abcli_option_int "$options" dryrun 1)
+        local do_upload=$(abcli_option_int "$options" upload 0)
 
         local hubble_object_name=$(abcli_clarify_object "$3" . hubble)
         local object_name=$(abcli_clarify_object "$4" .)
@@ -46,7 +49,19 @@ function hubble() {
         fi
 
         abcli_log "⚙️  $command_line"
-        [[ "$do_dryrun" == 0 ]] && eval "$command_line"
+        if [ "$do_dryrun" == 0 ] ; then
+            eval "$command_line"
+
+            abcli_tag set \
+                $object_name hubble \
+                validate
+            abcli_relation set \
+                $object_name $hubble_object_name \
+                is-download-of validate
+        fi
+
+        [[ "$do_upload" == 1 ]] && \
+            abcli_upload - $object_name
 
         return
     fi
