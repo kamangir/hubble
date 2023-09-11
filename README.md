@@ -38,4 +38,4 @@ open .
 
 ![image](./assets/u4ge0106r_d0f.jpg)
 
-[details](url)
+[details](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698)
