@@ -8,7 +8,7 @@ To start type in,
 hubble help
 ```
 
-```
+```bash
 🪐 hubble-3.5.1
 
 hubble list [.|<object-name>]
