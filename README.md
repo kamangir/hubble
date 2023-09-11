@@ -32,7 +32,7 @@ Example use.
 abcli select
 hubble select public/u4ge/u4ge0106r/
 hubble list .
-hubble download - . .
+hubble download ~dryrun
 open .
 ```
 
