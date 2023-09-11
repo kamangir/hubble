@@ -4,7 +4,7 @@ function hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ] ; then
-        abcli_show_usage "hubble list" \
+        abcli_show_usage "hubble list [<suffix>]" \
             "list hubble."
 
         # hubble_task $@
@@ -22,7 +22,14 @@ function hubble() {
     fi
 
     if [[ ",list,ls," == *",$task,"* ]] ; then
-        echo "wip"
+        local s3_uri=s3://stpubdata/hst/$2
+        abcli_log "🔗 $s3_uri"
+
+        # https://registry.opendata.aws/hst/
+        aws s3 ls \
+            --no-sign-request \
+            $s3_uri \
+            "${@:3}"
         return
     fi
 
