@@ -11,10 +11,12 @@ hubble help
 ```
 🪐 hubble-3.5.1
 
-hubble list [<public/u4ge/u4ge0106r>]
+hubble list [.|<object-name>]
  . list hubble.
-hubble select <public/u4ge/u4ge0106r>
+hubble select <object-name>
  . select a hubble object.
+
+example object: public/u4ge/u4ge0106r
  ```
 
 Example use.

@@ -6,14 +6,16 @@ function hubble() {
     if [ $task == "help" ] ; then
         abcli_log "🪐 $(python3 -m hubble version)\n"
 
-        abcli_show_usage "hubble list [<public/u4ge/u4ge0106r>]" \
+        abcli_show_usage "hubble list [<object-name>]" \
             "list hubble."
-        abcli_show_usage "hubble select <public/u4ge/u4ge0106r>" \
-            "select a hubble product."
+        abcli_show_usage "hubble select <object-name>" \
+            "select a hubble object."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
             python3 -m hubble --help
         fi
+
+        abcli_log "\nexample object: public/u4ge/u4ge0106r"
         return
     fi
 
@@ -24,7 +26,8 @@ function hubble() {
     fi
 
     if [[ ",list,ls," == *",$task,"* ]] ; then
-        local s3_uri=s3://stpubdata/hst/$2
+        local object_name=$(abcli_clarify_object "$2" "" hubble)
+        local s3_uri=s3://stpubdata/hst/$object_name
         abcli_log "🔗 $s3_uri"
 
         # https://registry.opendata.aws/hst/
@@ -36,8 +39,14 @@ function hubble() {
     fi
 
     if [ "$task" == select ] ; then
+        local object_name=$2
+        if [ -z "$object_name" ] ; then
+            abcli_log_error "-hubble: select: object-name not found."
+            return 1
+        fi
+
         abcli_select \
-            "$2" \
+            $object_name \
             $(abcli_option_update "$3" plugin hubble) \
             "${@:4}"
         return
