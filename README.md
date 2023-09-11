@@ -36,4 +36,6 @@ hubble download ~dryrun,upload
 open .
 ```
 
-[results](url)
+![image](./assets/u4ge0106r_d0f.jpg)
+
+[details](url)
