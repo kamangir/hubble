@@ -6,10 +6,10 @@ function hubble() {
     if [ $task == "help" ] ; then
         abcli_log "🪐 $(python3 -m hubble version)\n"
 
-        abcli_show_usage "hubble list [<suffix>]" \
+        abcli_show_usage "hubble list [<public/u4ge/u4ge0106r>]" \
             "list hubble."
-
-        # hubble_task $@
+        abcli_show_usage "hubble select <public/u4ge/u4ge0106r>" \
+            "select a hubble product."
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ] ; then
             python3 -m hubble --help
@@ -32,6 +32,14 @@ function hubble() {
             --no-sign-request \
             $s3_uri \
             "${@:3}"
+        return
+    fi
+
+    if [ "$task" == select ] ; then
+        abcli_select \
+            "$2" \
+            $(abcli_option_update "$3" plugin hubble) \
+            "${@:4}"
         return
     fi
 
