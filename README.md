@@ -9,7 +9,7 @@ hubble help
 ```
 
 ```bash
-🪐 hubble-3.9.1
+🪐 hubble-3.10.1
 
 hubble download \
 	[~dryrun,filename=<filename>|all,upload] \
@@ -36,6 +36,8 @@ hubble download ~dryrun,upload
 open .
 ```
 
-![image](./assets/u4ge0106r_d0f.jpg)
+[`./notebooks/fits.ipynb`](./notebooks/fits.ipynb)
+
+![image](./assets/u4ge0106r_c0m--analysis-1.png)
 
 [details](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698)
