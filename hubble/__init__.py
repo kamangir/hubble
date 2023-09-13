@@ -1,5 +1,5 @@
 NAME = "hubble"
 
-VERSION = "3.9.1"
+VERSION = "3.10.1"
 
 from .functions import *
