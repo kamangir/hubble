@@ -96,7 +96,7 @@ def load_fit_file(
         generate_animated_gif(
             list_of_images,
             file.set_extension(filename, "gif"),
-            frame_duration=1,
+            frame_duration=500,
         )
 
     return images
