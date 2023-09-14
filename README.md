@@ -9,10 +9,10 @@ hubble help
 ```
 
 ```bash
-🪐 hubble-3.10.1
+🪐 hubble-3.14.1
 
 hubble download \
-	[~dryrun,filename=<filename>|all,upload] \
+	[~dryrun,filename=<filename>|all,~ingest,upload] \
 	[<hubble-object-name>] \
 	[<object-name>]
  . <hubble-object-name> -> <object-name>.
@@ -24,12 +24,12 @@ hubble select \
  . select a hubble object.
 
 example object: public/u4ge/u4ge0106r/
- ```
+```
 
 ---
 
 ```bash
-abcli select hubble-download-val-2023-09-10-v5
+abcli select hubble-download-val-2023-09-13-v1
 hubble select public/u4ge/u4ge0106r/
 hubble list .
 hubble download ~dryrun,upload

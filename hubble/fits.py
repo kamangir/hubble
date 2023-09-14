@@ -10,6 +10,11 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def ingest(object_name: str) -> bool:
+    logger.info(f"{NAME}.ingest({object_name})")
+    return True
+
+
 def load_fit_file(
     filename: str,
     plot: bool = False,
