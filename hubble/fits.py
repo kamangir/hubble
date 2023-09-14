@@ -93,6 +93,10 @@ def load_fit_file(
             else:
                 plt.close()
 
-        generate_animated_gif(list_of_images, file.set_extension(filename, "gif"))
+        generate_animated_gif(
+            list_of_images,
+            file.set_extension(filename, "gif"),
+            frame_duration=1,
+        )
 
     return images
