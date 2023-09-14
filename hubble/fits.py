@@ -3,6 +3,7 @@ from typing import List
 from astropy.io import fits
 import matplotlib.pyplot as plt
 from abcli.modules import objects
+from abcli.plugins.graphics.gif import generate_animated_gif
 from abcli import file, path
 from tqdm import tqdm
 from . import NAME
@@ -26,6 +27,7 @@ def load_fit_file(
     plot: bool = False,
     cmap: str = "hot",
 ) -> List[np.ndarray]:
+    list_of_images = []
     with fits.open(filename) as hdul:
         hdul.info()
         logger.info(f"{NAME}.load_fit_file({filename}): {len(hdul)} item(s)")
@@ -79,16 +81,18 @@ def load_fit_file(
             plt.xlabel("value")
             plt.ylabel("frequency")
             plt.grid(True)
-            plt.savefig(
-                file.add_postfix(
-                    file.set_extension(filename, "png"),
-                    f"{index}",
-                )
+            image_filename = file.add_postfix(
+                file.set_extension(filename, "png"),
+                f"{index}",
             )
+            plt.savefig(image_filename)
+            list_of_images += [image_filename]
             if plot and first_to_show:
                 first_to_show = False
                 plt.show()
             else:
                 plt.close()
+
+        generate_animated_gif(list_of_images, file.set_extension(filename, "gif"))
 
     return images
