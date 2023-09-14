@@ -30,14 +30,14 @@ example object: public/u4ge/u4ge0106r/
 
 ```bash
 abcli select hubble-download-val-2023-09-13-v1
+open .
 hubble select public/u4ge/u4ge0106r/
 hubble list .
 hubble download ~dryrun,upload
-open .
 ```
 
 [`./notebooks/fits.ipynb`](./notebooks/fits.ipynb)
 
-![image](./assets/u4ge0106r_c0m--analysis-1.png)
+![image](./assets/u4ge0106r_c0m.gif)
 
 [one](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698), [two](https://arash-kamangir.medium.com/hubble-space-telescope-ai-2-9282b801e25e)
