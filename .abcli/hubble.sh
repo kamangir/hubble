@@ -11,9 +11,8 @@ function abcli_hubble() {
         abcli_log "🪐 $(python3 -m hubble version)\n"
 
         abcli_hubble_download "$@"
+        abcli_hubble_list "$@"
 
-        abcli_show_usage "hubble list$ABCUL[<object-name>]" \
-            "list hubble."
         abcli_show_usage "hubble select$ABCUL<object-name>" \
             "select a hubble object."
 
@@ -28,19 +27,6 @@ function abcli_hubble() {
     local function_name=abcli_hubble_$task
     if [[ $(type -t $function_name) == "function" ]]; then
         $function_name "${@:2}"
-        return
-    fi
-
-    if [[ ",list,ls," == *",$task,"* ]]; then
-        local object_name=$(abcli_clarify_object "$2" "" hubble)
-        local s3_uri=s3://stpubdata/hst/$object_name
-        abcli_log "🔗 $s3_uri"
-
-        # https://registry.opendata.aws/hst/
-        aws s3 ls \
-            --no-sign-request \
-            $s3_uri \
-            "${@:3}"
         return
     fi
 
