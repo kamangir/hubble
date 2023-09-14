@@ -29,7 +29,7 @@ example object: public/u4ge/u4ge0106r/
 ---
 
 ```bash
-abcli select hubble-download-val-2023-09-13-v1
+abcli select
 open .
 hubble select public/u4ge/u4ge0106r/
 hubble list .
