@@ -9,21 +9,22 @@ hubble help
 ```
 
 ```bash
-🔭 hubble-3.21.1
+🔭 hubble-3.22.1
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
 	[<hubble-object-name>] \
 	[<object-name>]
- . <hubble-object-name> -> <object-name>.
+ . venus-l2a-cogs/<hubble-object-name> -> <object-name>.
 hubble list \
-	[<object-name>]
- . list hubble.
+	[<dataset-name>|<object-name>]
+ . list.
+hubble select \
+	<dataset-name>
+ . select <dataset-name>, example: hst.
 hubble select \
 	<object-name>
- . select a hubble object.
-
-example object: public/u4ge/u4ge0106r/
+ . select <object-name> in venus-l2a-cogs, example in hst: public/u4ge/u4ge0106r.
 ```
 
 ---
@@ -31,7 +32,7 @@ example object: public/u4ge/u4ge0106r/
 ```bash
 abcli select
 open .
-hubble select public/u4ge/u4ge0106r/
+hubble select public/u4ge/u4ge0106r
 hubble list .
 hubble download ~dryrun,upload
 ```
