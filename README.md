@@ -9,7 +9,7 @@ hubble help
 ```
 
 ```bash
-🪐 hubble-3.14.1
+🔭 hubble-3.21.1
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
