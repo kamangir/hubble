@@ -12,15 +12,11 @@ function abcli_hubble() {
 
         abcli_hubble_download "$@"
         abcli_hubble_list "$@"
-
-        abcli_show_usage "hubble select$ABCUL<object-name>" \
-            "select a hubble object."
+        abcli_hubble_select "$@"
 
         if [ "$(abcli_keyword_is $2 verbose)" == true ]; then
             python3 -m hubble --help
         fi
-
-        abcli_log "\nexample object: public/u4ge/u4ge0106r/"
         return
     fi
 
@@ -30,21 +26,17 @@ function abcli_hubble() {
         return
     fi
 
-    if [ "$task" == select ]; then
-        local object_name=$2
-        if [ -z "$object_name" ]; then
-            abcli_log_error "-hubble: select: object-name not found."
-            return 1
-        fi
-
-        abcli_select \
-            $object_name \
-            $(abcli_option_update "$3" plugin hubble) \
-            "${@:4}"
-        return
-    fi
-
     python3 -m hubble \
         $task \
-        ${@:2}
+        "${@:2}"
+}
+
+function abcli_hubble_get() {
+    local what=$1
+
+    python3 -m hubble get \
+        --what "$1" \
+        --dataset_name "$2" \
+        --object_name "$3" \
+        "${@:4}"
 }

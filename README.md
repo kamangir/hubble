@@ -1,6 +1,6 @@
-# hubble
+# hubble 🔭
 
-Tools to access and process [Hubble Space Telescope imagery](https://registry.opendata.aws/hst/). 
+`hubble` 🔭 is a set of tools to access and process [Hubble Space Telescope imagery](https://registry.opendata.aws/hst/) and other datasets on [AWS Open Data Registry](https://registry.opendata.aws/). 
 
 ---
 
@@ -9,35 +9,39 @@ hubble help
 ```
 
 ```bash
-🔭 hubble-3.21.1
+🔭 hubble-3.278.1
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
 	[<hubble-object-name>] \
 	[<object-name>]
- . <hubble-object-name> -> <object-name>.
+ . hst/<hubble-object-name> -> <object-name>.
 hubble list \
-	[<object-name>]
- . list hubble.
+	[dataset] <dataset-name>
+ . list <dataset-name>, example: hst.
+hubble list \
+	[object] <object-name>
+ . list <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 hubble select \
-	<object-name>
- . select a hubble object.
-
-example object: public/u4ge/u4ge0106r/
+	[dataset] <dataset-name>
+ . select <dataset-name>, example: hst.
+hubble select \
+	[object] <object-name>
+ . select <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 ```
 
----
+`hubble` supports `list`ing `dataset`s and the `objects`s in them and downloading the `object`s. here is an example use for ingesting data from the [Hubble Space Telescope](https://registry.opendata.aws/hst/) (`hst`),
+
 
 ```bash
-abcli select
-open .
-hubble select public/u4ge/u4ge0106r/
-hubble list .
-hubble download ~dryrun,upload
+abcli select; open .
+hubble select dataset hst
+hubble select object public/u4ge/u4ge0106r
+hubble download ~dryrun
 ```
 
-[`./notebooks/fits.ipynb`](./notebooks/fits.ipynb)
+![image](./assets/hst/u4ge0106r_c0m.gif)
 
-![image](./assets/u4ge0106r_c0m.gif)
+also see [`./notebooks/hst.ipynb`](./notebooks/hst.ipynb)
 
 [one](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698), [two](https://arash-kamangir.medium.com/hubble-space-telescope-ai-2-9282b801e25e)

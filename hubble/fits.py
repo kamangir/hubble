@@ -2,24 +2,13 @@ import numpy as np
 from typing import List
 from astropy.io import fits
 import matplotlib.pyplot as plt
-from abcli.modules import objects
 from abcli.plugins.graphics.gif import generate_animated_gif
 from abcli import file, path
-from tqdm import tqdm
 from . import NAME
 from abcli import logging
 import logging
 
 logger = logging.getLogger(__name__)
-
-
-def ingest(object_name: str) -> bool:
-    logger.info(f"{NAME}.ingest({object_name})")
-
-    for filename in tqdm(objects.list_of_files(object_name)):
-        if file.extension(filename) == "fits":
-            load_fit_file(filename)
-    return True
 
 
 def load_fit_file(
