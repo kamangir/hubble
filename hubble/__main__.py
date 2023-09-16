@@ -35,8 +35,8 @@ if args.task == "get":
     print(
         get(
             args.dataset_name,
-            args.object_name,
             args.what,
+            args.object_name,
         )
     )
     success = True

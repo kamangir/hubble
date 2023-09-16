@@ -7,18 +7,41 @@ function abcli_hubble_list() {
     local task=$1
 
     if [ "$task" == help ]; then
-        abcli_show_usage "hubble list$ABCUL[<dataset-name>|<object-name>]" \
-            "list."
+        abcli_show_usage "hubble list$ABCUL[dataset] <dataset-name>" \
+            "list <dataset-name>, example: hst."
+        abcli_show_usage "hubble list$ABCUL[object] <object-name>" \
+            "list <object-name> in $abcli_hubble_dataset_object_name, example in hst: public/u4ge/u4ge0106r."
         return
     fi
 
-    local dataset_name=$(abcli_clarify_object "$1" "" hubble_dataset)
-    local object_name=""
-    if [[ $(abcli_hubble_is_dataset $dataset_name) == 0 ]]; then
-        local dataset_name=$abcli_hubble_dataset_object_name
+    local thing_type=abcli_hubble_object
 
-        local object_name=$(abcli_clarify_object "$1" "" hubble_object)
+    local thing_type=$1
+    local thing_name=${2:-.}
+    local args="${@:3}"
+
+    if [[ -z "$thing_type" ]]; then
+        local thing_type=object
+        local thing_name=$abcli_hubble_object_object_name
+        local args="${@:2}"
+    elif [[ $(abcli_hubble_is_dataset $thing_type) == 1 ]]; then
+        local thing_type=dataset
+        local thing_name=${1:-.}
+        local args="${@:2}"
+    elif [[ "$thing_type" != dataset ]] && [[ "$thing_type" != object ]]; then
+        local thing_type=object
+        local thing_name=${1:-.}
+        local args="${@:2}"
     fi
+
+    local dataset_name=$abcli_hubble_dataset_object_name
+    [[ "$thing_type" == dataset ]] &&
+        local dataset_name=$(abcli_clarify_object "$thing_name" "" abcli_hubble_dataset)
+
+    local object_name=""
+    [[ "$thing_type" == object ]] &&
+        local object_name=$(abcli_clarify_object "$thing_name" "" abcli_hubble_object)
+
     abcli_log "🔭 $dataset_name :: $object_name"
 
     local s3_uri=$(abcli_hubble_get s3_uri $dataset_name $object_name)
@@ -28,7 +51,7 @@ function abcli_hubble_list() {
     local command_line="aws s3 ls \
         $(abcli_hubble_get auth $dataset_name) \
         $s3_uri \
-        ${@:2}"
+        $args"
 
     abcli_log "⚙️  $command_line"
     eval "$command_line"

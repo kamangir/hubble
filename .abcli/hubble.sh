@@ -28,7 +28,7 @@ function abcli_hubble() {
 
     python3 -m hubble \
         $task \
-        ${@:2}
+        "${@:2}"
 }
 
 function abcli_hubble_get() {
@@ -38,5 +38,5 @@ function abcli_hubble_get() {
         --what "$1" \
         --dataset_name "$2" \
         --object_name "$3" \
-        "$(@:4)"
+        "${@:4}"
 }

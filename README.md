@@ -8,9 +8,8 @@
 hubble help
 ```
 
-🔥
 ```bash
-🔭 hubble-3.22.1
+🔭 hubble-3.24.1
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
@@ -18,13 +17,16 @@ hubble download \
 	[<object-name>]
  . hst/<hubble-object-name> -> <object-name>.
 hubble list \
-	[<dataset-name>|<object-name>]
- . list.
+	[dataset] <dataset-name>
+ . list <dataset-name>, example: hst.
+hubble list \
+	[object] <object-name>
+ . list <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 hubble select \
-	<dataset-name>
+	[dataset] <dataset-name>
  . select <dataset-name>, example: hst.
 hubble select \
-	<object-name>
+	[object] <object-name>
  . select <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 ```
 

@@ -16,11 +16,11 @@ def get(
     object_name: str = "",
 ) -> Any:
     if what == "auth":
-        resources = get(dataset_name, "resources:S3 Bucket")
+        resources = get(dataset_name, "resource:S3 Bucket")
         if not resources:
-            return "resource-not-found"
+            return "auth:resource-not-found"
 
-        RequesterPays = resources[0].get(RequesterPays, False)
+        RequesterPays = resources[0].get("RequesterPays", False)
 
         return "--requester-pays" if RequesterPays else "--no-sign-request"
 
@@ -41,7 +41,7 @@ def get(
 
         metadata = get(dataset_name, "metadata")
         if not metadata:
-            return {"metadata-not-found": True}
+            return [{"resource:metadata-not-found": True}]
 
         return [
             resource
@@ -49,16 +49,16 @@ def get(
             if resource.get("Type") == resource_type
         ]
     elif what == "s3_uri":
-        resources = get(dataset_name, "resources:S3 Bucket")
+        resources = get(dataset_name, "resource:S3 Bucket")
         if not resources:
-            return "resource-not-found"
+            return "s3_uri:resource-not-found"
 
         ARN = resources[0].get("ARN", "")
 
         # arn:aws:s3:::stpubdata/hst
         return "s3://{}/{}".format(
             string.after(ARN, "arn:aws:s3:::"),
-            object_name,
+            f"{object_name}/" if object_name else "",
         )
 
     return f"{what}-not-found"
