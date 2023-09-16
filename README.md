@@ -9,7 +9,7 @@ hubble help
 ```
 
 ```bash
-🔭 hubble-3.24.1
+🔭 hubble-3.26.1
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
@@ -31,17 +31,17 @@ hubble select \
 ```
 
 ---
-🔥
+
 ```bash
 abcli select
 open .
-hubble select public/u4ge/u4ge0106r
-hubble list .
-hubble download ~dryrun,upload
+hubble select dataset hst
+hubble select object public/u4ge/u4ge0106r
+hubble download ~dryrun
 ```
 
-[`./notebooks/fits.ipynb`](./notebooks/fits.ipynb)
-
 ![image](./assets/u4ge0106r_c0m.gif)
+
+[`./notebooks/fits.ipynb`](./notebooks/fits.ipynb)
 
 [one](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698), [two](https://arash-kamangir.medium.com/hubble-space-telescope-ai-2-9282b801e25e)
