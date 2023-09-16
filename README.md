@@ -42,6 +42,8 @@ hubble download ~dryrun
 
 ![image](./assets/hst/u4ge0106r_c0m.gif)
 
+![image](./assets/hst/2023-09-15-19-34-36-01196.png)
+
 also see [`./notebooks/hst.ipynb`](./notebooks/hst.ipynb)
 
 ---
