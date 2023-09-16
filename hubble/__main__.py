@@ -1,6 +1,6 @@
 import argparse
 from hubble.datasets import get
-from hubble.fits import ingest
+from hubble.ingest import ingest
 from hubble import NAME, VERSION
 from abcli import logging
 import logging
@@ -24,6 +24,11 @@ parser.add_argument(
     default="",
 )
 parser.add_argument(
+    "--hubble_object_name",
+    type=str,
+    default="",
+)
+parser.add_argument(
     "--what",
     type=str,
     default="",
@@ -41,7 +46,11 @@ if args.task == "get":
     )
     success = True
 elif args.task == "ingest":
-    success = ingest(args.object_name)
+    success = ingest(
+        args.object_name,
+        args.dataset_name,
+        args.hubble_object_name,
+    )
 elif args.task == "version":
     print(f"{NAME}-{VERSION}")
     success = True

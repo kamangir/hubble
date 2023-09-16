@@ -49,6 +49,8 @@ function abcli_hubble_download() {
 
     if [ "$do_ingest" == 1 ]; then
         python3 -m hubble ingest \
+            --dataset_name $dataset_name \
+            --hubble_object_name $hubble_object_name \
             --object_name $object_name
     fi
 
