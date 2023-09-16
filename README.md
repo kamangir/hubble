@@ -30,7 +30,7 @@ hubble select \
  . select <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 ```
 
-`hubble` supports `list`ing `dataset`s and the `objects`s in them and downloading the `object`s. here is an example use for ingesting data from the [Hubble Space Telescope](https://registry.opendata.aws/hst/) (`hst`),
+`hubble` supports `list`ing `dataset`s and the `objects`s in them and downloading the `object`s. here is an example use for ingesting the object `public/u4ge/u4ge0106r` from the dataset [Hubble Space Telescope](https://registry.opendata.aws/hst/) (`hst`),
 
 
 ```bash
