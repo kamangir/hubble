@@ -17,7 +17,7 @@ function abcli_hubble_download() {
     local do_upload=$(abcli_option_int "$options" upload 0)
     local do_ingest=$(abcli_option_int "$options" ingest 1)
 
-    local hubble_object_name=$(abcli_clarify_object "$2" . hubble)
+    local hubble_object_name=$(abcli_clarify_object "$2" . abcli_hubble_object)
     local object_name=$(abcli_clarify_object "$3" .)
 
     local auth=$(abcli_hubble_get auth $dataset_name)
