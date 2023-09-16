@@ -1,6 +1,6 @@
-# hubble
+# hubble 🔭
 
-Tools to access and process [Hubble Space Telescope imagery](https://registry.opendata.aws/hst/). 
+`hubble` 🔭 is a set of tools to access and process [Hubble Space Telescope imagery](https://registry.opendata.aws/hst/) and other datasets on [AWS Open Data Registry](https://registry.opendata.aws/). 
 
 ---
 
@@ -8,6 +8,7 @@ Tools to access and process [Hubble Space Telescope imagery](https://registry.op
 hubble help
 ```
 
+🔥
 ```bash
 🔭 hubble-3.22.1
 
@@ -15,7 +16,7 @@ hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
 	[<hubble-object-name>] \
 	[<object-name>]
- . venus-l2a-cogs/<hubble-object-name> -> <object-name>.
+ . hst/<hubble-object-name> -> <object-name>.
 hubble list \
 	[<dataset-name>|<object-name>]
  . list.
@@ -24,11 +25,11 @@ hubble select \
  . select <dataset-name>, example: hst.
 hubble select \
 	<object-name>
- . select <object-name> in venus-l2a-cogs, example in hst: public/u4ge/u4ge0106r.
+ . select <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 ```
 
 ---
-
+🔥
 ```bash
 abcli select
 open .

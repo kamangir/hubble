@@ -19,8 +19,7 @@ function abcli_hubble_list() {
 
         local object_name=$(abcli_clarify_object "$1" "" hubble_object)
     fi
-    abcli_log "🔭 hubble dataset: $dataset_name"
-    abcli_log "🔭 hubble object: $dataset_name/$object_name"
+    abcli_log "🔭 $dataset_name :: $object_name"
 
     local s3_uri=$(abcli_hubble_get s3_uri $dataset_name $object_name)
     abcli_log "🔗 $s3_uri"

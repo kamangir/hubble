@@ -3,34 +3,48 @@
 [[ -z "$abcli_hubble_dataset_object_name" ]] && export abcli_hubble_dataset_object_name=hst
 
 function abcli_hubble_select() {
-    local object_name=$1
-
-    if [ "$object_name" == help ]; then
-        abcli_show_usage "hubble select$ABCUL<dataset-name>" \
+    if [ "$1" == help ]; then
+        abcli_show_usage "hubble select$ABCUL[dataset] <dataset-name>" \
             "select <dataset-name>, example: hst."
-        abcli_show_usage "hubble select$ABCUL<object-name>" \
+        abcli_show_usage "hubble select$ABCUL[object] <object-name>" \
             "select <object-name> in $abcli_hubble_dataset_object_name, example in hst: public/u4ge/u4ge0106r."
         return
     fi
 
-    if [ -z "$object_name" ]; then
-        abcli_log_error "-hubble: select: object-name not found."
+    local thing_type=abcli_hubble_object
+
+    local thing_type=$1
+    local thing_name=$2
+    local args="${@:3}"
+
+    if [[ -z "$thing_type" ]]; then
+        abcli_log_error "-hubble: select: <object-name> not found."
         return 1
+    elif [[ $(abcli_hubble_is_dataset $thing_type) == 1 ]]; then
+        local thing_type=dataset
+        local thing_name=$1
+        local args="${@:2}"
+    elif [[ "$thing_type" != dataset ]] && [[ "$thing_type" != object ]]; then
+        local thing_type=object
+        local thing_name=$1
+        local args="${@:2}"
     fi
 
-    local object_type=abcli_hubble_object
-    if [[ $(abcli_hubble_is_dataset $object_name) == 1 ]]; then
-        local object_type=abcli_hubble_dataset
+    if [[ "$thing_type" == dataset ]]; then
+        abcli_log "🔭 dataset :: $thing_name"
 
-        abcli_log "🔗 https://registry.opendata.aws/$object_name/"
-        abcli_log "🔗 https://github.com/awslabs/open-data-registry/blob/main/datasets/$object_name.yaml"
-        abcli_log_file $(abcli_hubble_dataset_metadata $object_name)
+        abcli_log "🔗 https://registry.opendata.aws/$thing_name/"
+        abcli_log "🔗 https://github.com/awslabs/open-data-registry/blob/main/datasets/$thing_name.yaml"
+        abcli_log_file $(abcli_hubble_dataset_metadata $thing_name)
+    else
+        abcli_log "🔭 $abcli_hubble_dataset_object_name :: $thing_name"
+
     fi
 
     abcli_select \
-        $object_name \
-        $(abcli_option_update "$3" plugin $object_type) \
-        "${@:4}"
+        $thing_name \
+        $(abcli_option_update "$3" plugin abcli_hubble_${thing_type}) \
+        "$args"
 }
 
 function abcli_hubble_dataset_metadata() {
