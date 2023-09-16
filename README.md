@@ -44,4 +44,4 @@ hubble download ~dryrun
 
 also see [`./notebooks/hst.ipynb`](./notebooks/hst.ipynb)
 
-[one](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698), [two](https://arash-kamangir.medium.com/hubble-space-telescope-ai-2-9282b801e25e)
+[one](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698), [two](https://arash-kamangir.medium.com/hubble-space-telescope-ai-2-9282b801e25e), [three](https://medium.com/@arash-kamangir/hubble-space-telescope-ai-4-a994e7bf835e)
