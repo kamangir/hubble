@@ -1,11 +1,11 @@
 from setuptools import setup
 
-from hubble import NAME, VERSION
+from hubble import NAME, VERSION, DESCRIPTION
 
 setup(
     name=NAME,
     author="arash@kamangir.net",
     version=VERSION,
-    description="tools to access and process Hubble Space Telescope imagery.",
+    description=DESCRIPTION,
     packages=[NAME],
 )

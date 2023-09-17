@@ -1,7 +1,7 @@
 import argparse
 from hubble.datasets import get
 from hubble.ingest import ingest
-from hubble import NAME, VERSION
+from hubble import NAME, VERSION, DESCRIPTION
 from abcli import logging
 import logging
 
@@ -17,6 +17,12 @@ parser.add_argument(
     "--dataset_name",
     type=str,
     default="",
+)
+parser.add_argument(
+    "--show_description",
+    type=bool,
+    default=0,
+    help="0|1",
 )
 parser.add_argument(
     "--object_name",
@@ -52,7 +58,13 @@ elif args.task == "ingest":
         args.hubble_object_name,
     )
 elif args.task == "version":
-    print(f"{NAME}-{VERSION}")
+    print(
+        "{}-{}{}".format(
+            NAME,
+            VERSION,
+            "\\n{}".format(DESCRIPTION) if args.show_description else "",
+        )
+    )
     success = True
 else:
     logger.error(f"-{NAME}: {args.task}: command not found.")

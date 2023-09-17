@@ -9,7 +9,8 @@ hubble help
 ```
 
 ```bash
-🔭 hubble-3.278.1
+🔭 hubble-3.284.1
+🔭 tools to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry.
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
