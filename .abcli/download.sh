@@ -31,7 +31,7 @@ function abcli_hubble_download() {
     else
         local command_line="aws s3 cp \
             $auth \
-            $s3_uri/$filename \
+            $s3_uri$filename \
             $abcli_object_root/$object_name/"
     fi
 
