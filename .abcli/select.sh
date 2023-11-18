@@ -43,7 +43,7 @@ function abcli_hubble_select() {
 
     abcli_select \
         $thing_name \
-        $(abcli_option_update "$3" plugin abcli_hubble_${thing_type}) \
+        $3,plugin=abcli_hubble_${thing_type} \
         "$args"
 }
 
