@@ -4,10 +4,10 @@
 
 function abcli_hubble_select() {
     if [ "$1" == help ]; then
-        abcli_show_usage "hubble select$ABCUL[dataset] <dataset-name>" \
-            "select <dataset-name>, example: hst."
-        abcli_show_usage "hubble select$ABCUL[object] <object-name>" \
-            "select <object-name> in $abcli_hubble_dataset_name, example in hst: public/u4ge/u4ge0106r."
+        abcli_show_usage "hubble select [dataset] <hubble-dataset-name>" \
+            "select <hubble-dataset-name>, example: hst."
+        abcli_show_usage "hubble select [object] <hubble-object-name>" \
+            "select <hubble-object-name> in $abcli_hubble_dataset_name, example in hst: public/u4ge/u4ge0106r."
         return
     fi
 
