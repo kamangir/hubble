@@ -1,6 +1,6 @@
 NAME = "hubble"
 
-VERSION = "3.288.1"
+VERSION = "3.294.1"
 
 DESCRIPTION = "🔭 tools to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry."
 

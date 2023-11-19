@@ -7,14 +7,12 @@ function abcli_hubble_list() {
     local task=$1
 
     if [ "$task" == help ]; then
-        abcli_show_usage "hubble list$ABCUL[dataset] <dataset-name>" \
-            "list <dataset-name>, example: hst."
-        abcli_show_usage "hubble list$ABCUL[object] <object-name>" \
-            "list <object-name> in $abcli_hubble_dataset_object_name, example in hst: public/u4ge/u4ge0106r."
+        abcli_show_usage "hubble list$ABCUL[dataset] [.|<hubble-dataset-name>]" \
+            "list <hubble-dataset-name>, example: hst."
+        abcli_show_usage "hubble list$ABCUL[object] [.<hubble-object-name>]" \
+            "list <hubble-object-name> in $abcli_hubble_dataset_name, example in hst: public/u4ge/u4ge0106r."
         return
     fi
-
-    local thing_type=abcli_hubble_object
 
     local thing_type=$1
     local thing_name=${2:-.}
@@ -22,7 +20,7 @@ function abcli_hubble_list() {
 
     if [[ -z "$thing_type" ]]; then
         local thing_type=object
-        local thing_name=$abcli_hubble_object_object_name
+        local thing_name=$abcli_hubble_object_name
         local args="${@:2}"
     elif [[ $(abcli_hubble_is_dataset $thing_type) == 1 ]]; then
         local thing_type=dataset
@@ -34,13 +32,13 @@ function abcli_hubble_list() {
         local args="${@:2}"
     fi
 
-    local dataset_name=$abcli_hubble_dataset_object_name
+    local dataset_name=$abcli_hubble_dataset_name
     [[ "$thing_type" == dataset ]] &&
-        local dataset_name=$(abcli_clarify_object "$thing_name" "" abcli_hubble_dataset)
+        local dataset_name=$(abcli_clarify_object "$thing_name" "" hubble_dataset)
 
     local object_name=""
     [[ "$thing_type" == object ]] &&
-        local object_name=$(abcli_clarify_object "$thing_name" "" abcli_hubble_object)
+        local object_name=$(abcli_clarify_object "$thing_name" "" hubble_object)
 
     abcli_log "🔭 $dataset_name :: $object_name"
 

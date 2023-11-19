@@ -26,6 +26,11 @@ function abcli_hubble() {
         return
     fi
 
+    if [ "$task" == "init" ]; then
+        abcli_init hubble "${@:2}"
+        return
+    fi
+
     python3 -m hubble \
         $task \
         "${@:2}"

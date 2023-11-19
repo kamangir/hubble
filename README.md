@@ -5,24 +5,21 @@
 ---
 
 ```bash
-hubble help
-```
-
-```bash
-🔭 hubble-3.284.1
+ > hubble help
+🔭 hubble-3.294.1
 🔭 tools to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry.
 
 hubble download \
 	[~dryrun,filename=<filename>|all,~ingest,upload] \
-	[<hubble-object-name>] \
-	[<object-name>]
+	[.|<hubble-object-name>] \
+	[.|<object-name>]
  . hst/<hubble-object-name> -> <object-name>.
 hubble list \
-	[dataset] <dataset-name>
- . list <dataset-name>, example: hst.
+	[dataset] [.|<hubble-dataset-name>]
+ . list <hubble-dataset-name>, example: hst.
 hubble list \
-	[object] <object-name>
- . list <object-name> in hst, example in hst: public/u4ge/u4ge0106r.
+	[object] [.<hubble-object-name>]
+ . list <hubble-object-name> in hst, example in hst: public/u4ge/u4ge0106r.
 hubble select \
 	[dataset] <dataset-name>
  . select <dataset-name>, example: hst.
@@ -46,7 +43,3 @@ hubble download ~dryrun
 ![image](./assets/hst/2023-09-15-19-34-36-01196.png)
 
 also see [`./notebooks/hst.ipynb`](./notebooks/hst.ipynb)
-
----
-
-[one](https://arash-kamangir.medium.com/hubble-space-telescope-1-7857fe292698), [two](https://arash-kamangir.medium.com/hubble-space-telescope-ai-2-9282b801e25e), [three](https://medium.com/@arash-kamangir/hubble-space-telescope-ai-4-a994e7bf835e)

@@ -1,17 +1,15 @@
 #! /usr/bin/env bash
 
-[[ -z "$abcli_hubble_dataset_object_name" ]] && export abcli_hubble_dataset_object_name=hst
+[[ -z "$abcli_hubble_dataset_name" ]] && export abcli_hubble_dataset_name=hst
 
 function abcli_hubble_select() {
     if [ "$1" == help ]; then
         abcli_show_usage "hubble select$ABCUL[dataset] <dataset-name>" \
             "select <dataset-name>, example: hst."
         abcli_show_usage "hubble select$ABCUL[object] <object-name>" \
-            "select <object-name> in $abcli_hubble_dataset_object_name, example in hst: public/u4ge/u4ge0106r."
+            "select <object-name> in $abcli_hubble_dataset_name, example in hst: public/u4ge/u4ge0106r."
         return
     fi
-
-    local thing_type=abcli_hubble_object
 
     local thing_type=$1
     local thing_name=$2
@@ -37,13 +35,13 @@ function abcli_hubble_select() {
         abcli_log "🔗 https://github.com/awslabs/open-data-registry/blob/main/datasets/$thing_name.yaml"
         abcli_log_file $(abcli_hubble_dataset_metadata $thing_name)
     else
-        abcli_log "🔭 $abcli_hubble_dataset_object_name :: $thing_name"
+        abcli_log "🔭 $abcli_hubble_dataset_name :: $thing_name"
 
     fi
 
     abcli_select \
         $thing_name \
-        $3,plugin=abcli_hubble_${thing_type} \
+        $3,type=hubble_${thing_type} \
         "$args"
 }
 
