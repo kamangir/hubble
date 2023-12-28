@@ -8,8 +8,6 @@ function abcli_hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ]; then
-        abcli_log "🔭 $(python3 -m hubble version --show_description 1)\n"
-
         abcli_hubble_download "$@"
         abcli_hubble_list "$@"
         abcli_hubble_select "$@"
