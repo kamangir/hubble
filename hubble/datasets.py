@@ -1,5 +1,5 @@
 import os
-from abcli import file
+from abcli import env, file
 from typing import Any
 from abcli import string
 from abcli import logging
@@ -33,7 +33,7 @@ def get(
         )[1]
     elif what == "metadata_filename":
         return os.path.join(
-            os.getenv("abcli_path_git", ""),
+            env.abcli_path_git,
             f"open-data-registry/datasets/{dataset_name}.yaml",
         )
     elif what.startswith("resource:"):
