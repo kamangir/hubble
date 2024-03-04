@@ -1,8 +1,7 @@
 NAME = "hubble"
 
-VERSION = "3.298.1"
+ICON = "🔭"
 
-DESCRIPTION = "🔭 tools to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry."
+DESCRIPTION = f"{ICON} tools to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry."
 
-from hubble.datasets import *
-from hubble.fits import *
+VERSION = "3.299.1"

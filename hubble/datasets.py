@@ -2,10 +2,7 @@ import os
 from abcli import env, file
 from typing import Any
 from abcli import string
-from abcli import logging
-import logging
-
-logger = logging.getLogger(__name__)
+from hubble.logger import logger
 
 
 # https://registry.opendata.aws/hst/

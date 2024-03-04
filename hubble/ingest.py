@@ -3,10 +3,7 @@ from tqdm import tqdm
 from abcli import file
 from hubble.fits import load_fit_file
 from abcli.modules import objects
-from abcli import logging
-import logging
-
-logger = logging.getLogger(__name__)
+from hubble.logger import logger
 
 
 def ingest(

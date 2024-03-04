@@ -12,6 +12,11 @@ function abcli_hubble() {
         abcli_hubble_list "$@"
         abcli_hubble_select "$@"
 
+        local task
+        for task in pylint pytest test; do
+            abcli_hubble $task "$@"
+        done
+
         if [ "$(abcli_keyword_is $2 verbose)" == true ]; then
             python3 -m hubble --help
         fi
