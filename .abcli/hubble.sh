@@ -34,6 +34,12 @@ function abcli_hubble() {
         return
     fi
 
+    if [[ "|pylint|pytest|test|" == *"|$task|"* ]]; then
+        abcli_${task} plugin=hubble,$2 \
+            "${@:3}"
+        return
+    fi
+
     python3 -m hubble \
         $task \
         "${@:2}"

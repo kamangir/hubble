@@ -2,13 +2,10 @@ import numpy as np
 from typing import List
 from astropy.io import fits
 import matplotlib.pyplot as plt
-from abcli.plugins.graphics.gif import generate_animated_gif
 from abcli import file, path
-from . import NAME
-from abcli import logging
-import logging
-
-logger = logging.getLogger(__name__)
+from abcli.plugins.graphics.gif import generate_animated_gif
+from hubble import NAME
+from hubble.logger import logger
 
 
 def load_fit_file(
