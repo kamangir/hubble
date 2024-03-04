@@ -21,19 +21,21 @@ def get(
 
         return "--requester-pays" if RequesterPays else "--no-sign-request"
 
-    elif what == "metadata":
+    if what == "metadata":
         return file.load_yaml(
             get(
                 dataset_name,
                 "metadata_filename",
             )
         )[1]
-    elif what == "metadata_filename":
+
+    if what == "metadata_filename":
         return os.path.join(
             env.abcli_path_git,
             f"open-data-registry/datasets/{dataset_name}.yaml",
         )
-    elif what.startswith("resource:"):
+
+    if what.startswith("resource:"):
         resource_type = string.after(what, "resource:")
 
         metadata = get(dataset_name, "metadata")
@@ -45,7 +47,8 @@ def get(
             for resource in metadata.get("Resources", {})
             if resource.get("Type") == resource_type
         ]
-    elif what == "s3_uri":
+
+    if what == "s3_uri":
         resources = get(dataset_name, "resource:S3 Bucket")
         if not resources:
             return "s3_uri:resource-not-found"
