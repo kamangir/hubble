@@ -52,3 +52,6 @@ function abcli_hubble_get() {
         --object_name "$3" \
         "${@:4}"
 }
+
+abcli_source_path \
+    $abcli_path_git/hubble/.abcli/tests

@@ -1,4 +1,5 @@
 git+https://github.com/kamangir/awesome-bash-cli.git@current#egg=abcli
+astropy[recommended]
 boto3
 geojson
 geopandas
