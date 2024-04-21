@@ -4,4 +4,5 @@ ICON = "🔭"
 
 DESCRIPTION = f"{ICON} tools to access and process Hubble Space Telescope imagery and other datasets on AWS Open Data Registry."
 
-VERSION = "3.307.1"
+VERSION = "3.308.1"
+
