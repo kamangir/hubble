@@ -3,10 +3,6 @@
 function runme() {
     # set -x # verbose-mode
 
-    python -m pip install --upgrade pip
-    pip3 install -e .
-    pip3 install -r requirements.txt
-
     local git_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
     for i in {1..3}; do
         git_root=$(dirname $git_root)
