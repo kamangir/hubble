@@ -35,25 +35,26 @@ function abcli_hubble_download() {
             $abcli_object_root/$object_name/"
     fi
 
-    abcli_log "⚙️  $command_line"
-    if [ "$do_dryrun" == 0 ]; then
-        eval "$command_line"
+    abcli_eval dryrun=$do_dryrun \
+        "$command_line"
 
-        abcli_tag set \
-            $object_name hubble \
-            validate
+    if [ "$do_dryrun" == 0 ]; then
+        abcli_tag set $object_name hubble
+
         abcli_relation set \
             $object_name $hubble_object_name \
-            is-download-of validate
+            is-download-of
     fi
 
-    if [ "$do_ingest" == 1 ]; then
-        python3 -m hubble ingest \
+    [[ "$do_ingest" == 1 ]] &&
+        abcli_eval dryrun=$do_dryrun \
+            python3 -m hubble ingest \
             --dataset_name $dataset_name \
             --hubble_object_name $hubble_object_name \
             --object_name $object_name
-    fi
 
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $object_name
+
+    return 0
 }
