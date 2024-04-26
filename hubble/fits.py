@@ -36,13 +36,18 @@ def load_fit_file(
 
             margin = 5
 
-            vmin = np.percentile(image, margin)
-            vmax = np.percentile(image, 100 - margin)
+            image_flattenned = image.flatten()
+            image_flattenned = image_flattenned[~np.isnan(image_flattenned)]
+            if not image_flattenned.shape:
+                logger.warning("empty (likely all nan) image, skipped.")
+                continue
+            vmin = np.percentile(image_flattenned, margin)
+            vmax = np.percentile(image_flattenned, 100 - margin)
 
             logger.info(f"#{index}: {vmin:.3f} - {vmax:.3f}")
 
             histogram, bin_edges = np.histogram(
-                image,
+                image_flattenned,
                 bins=256,
                 range=(vmin, vmax),
             )
