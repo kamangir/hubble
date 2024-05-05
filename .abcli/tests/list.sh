@@ -12,15 +12,15 @@ function test_hubble_list() {
             hubble select dataset $dataset
             hubble select object $object
 
-            abcli_eval $options, \
+            abcli_eval ,$options \
                 hubble list
 
             abcli_hr
-            abcli_eval $options, \
+            abcli_eval ,$options \
                 hubble list dataset
 
             abcli_hr
-            abcli_eval $options, \
+            abcli_eval ,$options \
                 hubble list object
         done
     done

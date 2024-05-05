@@ -15,12 +15,12 @@ function test_hubble_select_and_download() {
             hubble select object $object
 
             abcli_select
-            abcli_eval $options, \
+            abcli_eval ,$options \
                 hubble download dryrun=$do_dryrun
 
             abcli_hr
             abcli_select
-            abcli_eval $options, \
+            abcli_eval ,$options \
                 hubble download dryrun=$do_dryrun,filename=$filename
         done
     done
