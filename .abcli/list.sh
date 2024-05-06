@@ -21,7 +21,7 @@ function abcli_hubble_list() {
 
     local thing_type=$1
     local thing_name=${2:-.}
-    local args="${@:3}"
+    local suffix="${@:3}"
 
     if [[ "$thing_type" == datasets ]]; then
         local options=$2
@@ -36,7 +36,6 @@ function abcli_hubble_list() {
         return 0
     fi
 
-    local suffix
     if [[ -z "$thing_type" ]]; then
         thing_type=object
         thing_name=$abcli_hubble_object_name
@@ -69,6 +68,5 @@ function abcli_hubble_list() {
     abcli_eval - \
         "aws s3 ls \
         $(abcli_hubble_get auth $dataset_name) \
-        $s3_uri \
-        $args"
+        $s3_uri"
 }
