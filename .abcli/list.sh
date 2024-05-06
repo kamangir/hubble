@@ -7,10 +7,11 @@ function abcli_hubble_list() {
     local task=$1
 
     if [ "$task" == help ]; then
-        abcli_show_usage "hubble list [dataset] [.|<hubble-dataset-name>]" \
-            "list <hubble-dataset-name>, example: hst."
-        abcli_show_usage "hubble list [object] [.|<hubble-object-name>]" \
+        abcli_show_usage "hubble list ${EOP}object$ABCUL.|<hubble-object-name>$EOPE" \
             "list <hubble-object-name> in $abcli_hubble_dataset_name, example in hst: public/u4ge/u4ge0106r."
+
+        abcli_show_usage "hubble list dataset$ABCUL$EOP.|<hubble-dataset-name>$EOPE" \
+            "list <hubble-dataset-name>, example: hst."
         return
     fi
 
