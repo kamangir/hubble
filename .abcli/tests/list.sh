@@ -3,6 +3,10 @@
 function test_hubble_list() {
     local options=$1
 
+    abcli_eval ,$options \
+        hubble list datasets
+    abcli_hr
+
     local dataset
     local object
     for dataset in hst; do

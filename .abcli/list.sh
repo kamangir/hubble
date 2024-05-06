@@ -7,6 +7,9 @@ function abcli_hubble_list() {
     local task=$1
 
     if [ "$task" == help ]; then
+        abcli_show_usage "hubble list datasets" \
+            "list hubble datasets."
+
         abcli_show_usage "hubble list dataset$ABCUL$EOP.|<hubble-dataset-name>$EOPE" \
             "list <hubble-dataset-name>, example: hst."
 
@@ -18,6 +21,11 @@ function abcli_hubble_list() {
     local thing_type=$1
     local thing_name=${2:-.}
     local args="${@:3}"
+
+    if [[ "$thing_type" == datasets ]]; then
+        abcli_list $abcli_path_git/open-data-registry/datasets
+        return
+    fi
 
     if [[ -z "$thing_type" ]]; then
         local thing_type=object
