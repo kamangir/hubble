@@ -29,6 +29,9 @@ function abcli_hubble_select() {
     fi
 
     if [[ "$thing_type" == dataset ]]; then
+        [[ $thing_name == *.yaml ]] &&
+            thing_name=${thing_name%.yaml}
+
         abcli_log "🔭 dataset :: $thing_name"
 
         abcli_log "🔗 https://registry.opendata.aws/$thing_name/"
