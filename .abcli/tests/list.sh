@@ -7,6 +7,10 @@ function test_hubble_list() {
         hubble list datasets
     abcli_hr
 
+    abcli_eval ,$options \
+        hubble list datasets keyword=space
+    abcli_hr
+
     local dataset
     local object
     for dataset in hst; do
