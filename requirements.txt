@@ -1,3 +1,4 @@
+blueness
 abcli
 astropy[recommended]
 boto3

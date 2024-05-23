@@ -4,8 +4,8 @@ from astropy.io import fits
 import matplotlib.pyplot as plt
 from abcli import file, path
 from abcli.plugins.graphics.gif import generate_animated_gif
-from hubble import NAME
-from hubble.logger import logger
+from hubblescope import NAME
+from hubblescope.logger import logger
 
 
 def load_fit_file(

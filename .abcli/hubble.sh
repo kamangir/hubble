@@ -4,6 +4,10 @@ function hubble() {
     abcli_hubble "$@"
 }
 
+function hubblescope() {
+    abcli_hubble "$@"
+}
+
 function abcli_hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
@@ -11,15 +15,6 @@ function abcli_hubble() {
         abcli_hubble_download "$@"
         abcli_hubble_list "$@"
         abcli_hubble_select "$@"
-
-        local task
-        for task in pylint pytest test; do
-            abcli_hubble $task "$@"
-        done
-
-        if [ "$(abcli_keyword_is $2 verbose)" == true ]; then
-            python3 -m hubble --help
-        fi
         return
     fi
 
@@ -40,9 +35,14 @@ function abcli_hubble() {
         return
     fi
 
-    python3 -m hubble \
-        $task \
-        "${@:2}"
+    if [[ "|pypi|" == *"|$task|"* ]]; then
+        abcli_${task} "$2" \
+            plugin=hubble,$3 \
+            "${@:4}"
+        return
+    fi
+
+    python3 -m hubble "$@"
 }
 
 function abcli_hubble_get() {

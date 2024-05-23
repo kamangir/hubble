@@ -1,4 +1,4 @@
 from abcli.logger import get_logger
-from hubble import ICON
+from hubblescope import ICON
 
 logger = get_logger(ICON)

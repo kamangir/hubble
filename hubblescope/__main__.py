@@ -1,8 +1,8 @@
 import argparse
-from hubble.datasets import get
-from hubble.ingest import ingest
-from hubble import NAME, VERSION, DESCRIPTION
-from hubble.logger import logger
+from hubblescope.datasets import get
+from hubblescope.ingest import ingest
+from hubblescope import NAME, VERSION, DESCRIPTION
+from hubblescope.logger import logger
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
 parser.add_argument(

@@ -1,9 +1,9 @@
-from hubble import NAME
+from hubblescope import NAME
 from tqdm import tqdm
 from abcli import file
-from hubble.fits import load_fit_file
+from hubblescope.fits import load_fit_file
 from abcli.modules import objects
-from hubble.logger import logger
+from hubblescope.logger import logger
 
 
 def ingest(
