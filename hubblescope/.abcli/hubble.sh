@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function abcli_hubble() {
+function hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ]; then
