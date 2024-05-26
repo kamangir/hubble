@@ -4,9 +4,9 @@ function abcli_hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ]; then
-        abcli_hubble_download "$@"
-        abcli_hubble_list "$@"
-        abcli_hubble_select "$@"
+        hubble_download "$@"
+        hubble_list "$@"
+        hubble_select "$@"
         return
     fi
 
