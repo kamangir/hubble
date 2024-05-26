@@ -14,6 +14,3 @@ function abcli_hubble() {
         plugin=hubble,task=$task \
         "${@:2}"
 }
-
-abcli_source_path \
-    $abcli_path_git/hubble/.abcli/tests
