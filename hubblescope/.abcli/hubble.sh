@@ -1,12 +1,12 @@
 #! /usr/bin/env bash
 
-function abcli_hubble() {
+function hubble() {
     local task=$(abcli_unpack_keyword $1 help)
 
     if [ $task == "help" ]; then
-        abcli_hubble_download "$@"
-        abcli_hubble_list "$@"
-        abcli_hubble_select "$@"
+        hubble_download "$@"
+        hubble_list "$@"
+        hubble_select "$@"
         return
     fi
 
@@ -14,6 +14,3 @@ function abcli_hubble() {
         plugin=hubble,task=$task \
         "${@:2}"
 }
-
-abcli_source_path \
-    $abcli_path_git/hubble/.abcli/tests

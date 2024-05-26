@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
-function abcli_hubble_ls() {
-    abcli_hubble_list "$@"
+function hubble_ls() {
+    hubble_list "$@"
 }
 
-function abcli_hubble_list() {
+function hubble_list() {
     local task=$1
 
     if [ "$task" == help ]; then
@@ -40,7 +40,7 @@ function abcli_hubble_list() {
         thing_type=object
         thing_name=$abcli_hubble_object_name
         suffix="${@:2}"
-    elif [[ $(abcli_hubble_is_dataset $thing_type) == 1 ]]; then
+    elif [[ $(hubble_is_dataset $thing_type) == 1 ]]; then
         thing_type=dataset
         thing_name=${1:-.}
         suffix="${@:2}"
@@ -60,13 +60,13 @@ function abcli_hubble_list() {
 
     abcli_log "🔭 $dataset_name :: $object_name"
 
-    local s3_uri=$(abcli_hubble_get s3_uri $dataset_name $object_name)
+    local s3_uri=$(hubble_get s3_uri $dataset_name $object_name)
     [[ ! -z "$suffix" ]] && s3_uri=$s3_uri$suffix
     abcli_log "🔗 $s3_uri"
 
     # https://registry.opendata.aws/hst/
     abcli_eval - \
         "aws s3 ls \
-        $(abcli_hubble_get auth $dataset_name) \
+        $(hubble_get auth $dataset_name) \
         $s3_uri"
 }

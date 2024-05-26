@@ -2,7 +2,7 @@
 
 [[ -z "$abcli_hubble_dataset_name" ]] && export abcli_hubble_dataset_name=hst
 
-function abcli_hubble_select() {
+function hubble_select() {
     if [ "$1" == help ]; then
         abcli_show_usage "hubble select [dataset] <hubble-dataset-name>" \
             "select <hubble-dataset-name>, example: hst."
@@ -18,7 +18,7 @@ function abcli_hubble_select() {
     if [[ -z "$thing_type" ]]; then
         abcli_log_error "-hubble: select: <object-name> not found."
         return 1
-    elif [[ $(abcli_hubble_is_dataset $thing_type) == 1 ]]; then
+    elif [[ $(hubble_is_dataset $thing_type) == 1 ]]; then
         local thing_type=dataset
         local thing_name=$1
         local args="${@:2}"
@@ -36,7 +36,7 @@ function abcli_hubble_select() {
 
         abcli_log "🔗 https://registry.opendata.aws/$thing_name/"
         abcli_log "🔗 https://github.com/awslabs/open-data-registry/blob/main/datasets/$thing_name.yaml"
-        abcli_log_file $(abcli_hubble_dataset_metadata $thing_name)
+        abcli_log_file $(hubble_dataset_metadata $thing_name)
     else
         abcli_log "🔭 $abcli_hubble_dataset_name :: $thing_name"
 
@@ -48,12 +48,12 @@ function abcli_hubble_select() {
         "$args"
 }
 
-function abcli_hubble_dataset_metadata() {
+function hubble_dataset_metadata() {
     echo $abcli_path_git/open-data-registry/datasets/$1.yaml
 }
 
-function abcli_hubble_is_dataset() {
-    if [[ -f $(abcli_hubble_dataset_metadata $1) ]]; then
+function hubble_is_dataset() {
+    if [[ -f $(hubble_dataset_metadata $1) ]]; then
         echo 1
         return
     fi
