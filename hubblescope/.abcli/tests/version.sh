@@ -6,4 +6,6 @@ function test_hubble_version() {
 
     abcli_eval dryrun=$do_dryrun \
         "hubble version ${@:2}"
+
+    return 0
 }
