@@ -1,8 +1,10 @@
-# hubble (hubblescope) 🔭
+# 🔭 hubble (hubblescope)
 
 `hubble` 🔭 is a set of tools to access and process [Hubble Space Telescope imagery](https://registry.opendata.aws/hst/) and other datasets on [AWS Open Data Registry](https://registry.opendata.aws/).
 
----
+```bash
+pip install hubblescope
+```
 
 ```bash
  > hubble help
@@ -37,4 +39,8 @@ hubble download ~dryrun
 
 ![image](./assets/hst/2023-09-15-19-34-36-01196.png)
 
-also see [`./notebooks/hst.ipynb`](./notebooks/hst.ipynb)
+also see [`notebooks/hst.ipynb`](./notebooks/hst.ipynb)
+
+---
+
+[![PyPI version](https://img.shields.io/pypi/v/hubblescope.svg)](https://pypi.org/project/hubblescope/)
