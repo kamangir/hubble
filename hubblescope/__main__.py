@@ -3,6 +3,7 @@ from hubblescope.datasets import get
 from hubblescope.ingest import ingest
 from hubblescope import NAME, VERSION, DESCRIPTION
 from hubblescope.logger import logger
+from blueness.argparse.generic import ending
 
 parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
 parser.add_argument(
@@ -64,7 +65,6 @@ elif args.task == "version":
     )
     success = True
 else:
-    logger.error(f"-{NAME}: {args.task}: command not found.")
+    success = None
 
-if not success:
-    logger.error(f"-{NAME}: {args.task}: failed.")
+ending(logger, NAME, args.task, success)
