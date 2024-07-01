@@ -14,3 +14,5 @@ function hubble() {
         plugin=hubble,task=$task \
         "${@:2}"
 }
+
+abcli_log $(hubble version --show_icon 1)
