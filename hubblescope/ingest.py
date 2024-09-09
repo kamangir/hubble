@@ -1,8 +1,10 @@
 from hubblescope import NAME
 from tqdm import tqdm
-from abcli import file
-from hubblescope.fits import load_fit_file
+
+from blue_objects import file
 from abcli.modules import objects
+
+from hubblescope.fits import load_fit_file
 from hubblescope.logger import logger
 
 
