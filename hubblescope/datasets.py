@@ -3,9 +3,7 @@ import os
 
 from blue_options import string
 from blue_objects import file
-from abcli import env
-
-from hubblescope.logger import logger
+from blue_objects.env import abcli_path_git
 
 
 # https://registry.opendata.aws/hst/
@@ -34,7 +32,7 @@ def get(
 
     if what == "metadata_filename":
         return os.path.join(
-            env.abcli_path_git,
+            abcli_path_git,
             f"open-data-registry/datasets/{dataset_name}.yaml",
         )
 

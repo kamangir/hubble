@@ -4,7 +4,7 @@ from astropy.io import fits
 import matplotlib.pyplot as plt
 
 from blue_objects import file, path
-from abcli.plugins.graphics.gif import generate_animated_gif
+from blue_objects.graphics.gif import generate_animated_gif
 
 from hubblescope import NAME
 from hubblescope.logger import logger
