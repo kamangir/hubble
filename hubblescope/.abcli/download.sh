@@ -29,12 +29,12 @@ function hubble_download() {
         command_line="aws s3 sync \
             $auth \
             $s3_uri \
-            $abcli_object_root/$object_name/"
+            $ABCLI_OBJECT_ROOT/$object_name/"
     else
         command_line="aws s3 cp \
             $auth \
             $s3_uri$filename \
-            $abcli_object_root/$object_name/"
+            $ABCLI_OBJECT_ROOT/$object_name/"
     fi
 
     [[ "$do_verbose" == 0 ]] &&

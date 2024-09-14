@@ -2,8 +2,10 @@ import numpy as np
 from typing import List
 from astropy.io import fits
 import matplotlib.pyplot as plt
-from abcli import file, path
-from abcli.plugins.graphics.gif import generate_animated_gif
+
+from blue_objects import file, path
+from blue_objects.graphics.gif import generate_animated_gif
+
 from hubblescope import NAME
 from hubblescope.logger import logger
 
@@ -72,8 +74,8 @@ def load_fit_file(
             plt.xlabel("value")
             plt.ylabel("frequency")
             plt.grid(True)
-            image_filename = file.add_postfix(
-                file.set_extension(filename, "png"),
+            image_filename = file.add_suffix(
+                file.add_extension(filename, "png"),
                 f"{index}",
             )
             plt.savefig(image_filename)
@@ -86,7 +88,7 @@ def load_fit_file(
 
         generate_animated_gif(
             list_of_images,
-            file.set_extension(filename, "gif"),
+            file.add_extension(filename, "gif"),
             frame_duration=500,
         )
 

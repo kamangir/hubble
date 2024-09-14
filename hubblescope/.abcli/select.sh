@@ -36,7 +36,7 @@ function hubble_select() {
 
         abcli_log "🔗 https://registry.opendata.aws/$thing_name/"
         abcli_log "🔗 https://github.com/awslabs/open-data-registry/blob/main/datasets/$thing_name.yaml"
-        abcli_log_file $(hubble_dataset_metadata $thing_name)
+        abcli_cat $(hubble_dataset_metadata $thing_name)
     else
         abcli_log "🔭 $abcli_hubble_dataset_name :: $thing_name"
 

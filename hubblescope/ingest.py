@@ -1,9 +1,14 @@
-from hubblescope import NAME
 from tqdm import tqdm
-from abcli import file
+
+from blueness import module
+from blue_objects import file, objects
+
+from hubblescope import NAME
 from hubblescope.fits import load_fit_file
-from abcli.modules import objects
 from hubblescope.logger import logger
+
+
+NAME = module.name(__file__, NAME)
 
 
 def ingest(
