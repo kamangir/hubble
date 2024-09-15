@@ -44,9 +44,9 @@ function hubble_download() {
         "$command_line"
 
     if [ "$do_dryrun" == 0 ]; then
-        abcli_tag set $object_name hubble
+        abcli_tags set $object_name hubble
 
-        abcli_relation set \
+        abcli_relations set \
             $object_name $hubble_object_name \
             is-download-of
     fi
