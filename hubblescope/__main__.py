@@ -1,11 +1,13 @@
 import argparse
+
+from blueness.argparse.generic import sys_exit
+
 from hubblescope.datasets import get
 from hubblescope.ingest import ingest
 from hubblescope import NAME, VERSION, DESCRIPTION, ICON
 from hubblescope.logger import logger
-from blueness.argparse.generic import sys_exit
 
-parser = argparse.ArgumentParser(NAME, description=f"{NAME}-{VERSION}")
+parser = argparse.ArgumentParser(NAME)
 parser.add_argument(
     "task",
     type=str,
