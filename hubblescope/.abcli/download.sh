@@ -43,13 +43,10 @@ function hubble_download() {
     abcli_eval dryrun=$do_dryrun \
         "$command_line"
 
-    if [ "$do_dryrun" == 0 ]; then
-        abcli_tags set $object_name hubble
-
-        abcli_relations set \
-            $object_name $hubble_object_name \
-            is-download-of
-    fi
+    [[ "$do_dryrun" == 0 ]] &&
+        abcli_tags set \
+            $object_name \
+            hubble,is-download-of.$hubble_object_name
 
     [[ "$do_ingest" == 1 ]] &&
         abcli_eval dryrun=$do_dryrun \
@@ -57,6 +54,7 @@ function hubble_download() {
             --dataset_name $dataset_name \
             --hubble_object_name $hubble_object_name \
             --object_name $object_name
+    [[ $? -ne 0 ]] && return 1
 
     [[ "$do_upload" == 1 ]] &&
         abcli_upload - $object_name
